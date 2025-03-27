@@ -14,9 +14,20 @@ const roman_symbol = {
   'M': 1000
 }
 
-const test_data = 'MCMXCIV';
+let test_data = 'DCXXI';
 let result = 0;
 
 for(const key in roman_symbol) {
-  console.log(`${key}: ${roman_symbol[key]}`);
+  if(test_data == '') break;
+  const temp_test_data = test_data;
+
+  while(test_data.indexOf(key) !== -1) {
+    test_data = test_data.replace(key, '');
+
+    if(test_data !== temp_test_data) {
+      result += roman_symbol[key];
+    }
+  }
 }
+
+console.log(result);
